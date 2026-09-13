@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#0a0c10" />
+  <meta name="description" content="Knights of the Renaissance — a bilingual 16-bit inspired action-platformer playable prologue by Vigu Studio." />
+  <title>Knights of the Renaissance</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell" aria-label="Knights of the Renaissance game">
+    <div id="game-frame">
+      <canvas id="game" width="480" height="270" aria-label="Game canvas"></canvas>
+
+      <section id="orientation-screen" class="orientation-screen" aria-live="polite" aria-label="Rotate device">
+        <div class="orientation-card">
+          <div class="rotate-phone" aria-hidden="true"><span>↻</span></div>
+          <h2 id="orientation-title">ROTATE YOUR DEVICE</h2>
+          <p id="orientation-text">For the best experience, play in landscape mode.</p>
+          <button id="orientation-btn" class="pixel-btn primary" type="button">ENTER LANDSCAPE</button>
+          <p id="orientation-help" class="orientation-help">If automatic rotation is unavailable, rotate your phone manually.</p>
+        </div>
+      </section>
+
+      <section id="title-screen" class="overlay screen active" aria-label="Title screen">
+        <div class="title-card">
+          <div class="crest" aria-hidden="true"><span>✦</span></div>
+          <p id="eyebrow" class="eyebrow">VIGU STUDIO PRESENTS</p>
+          <h1>KNIGHTS <small>OF THE</small> RENAISSANCE</h1>
+          <p id="subtitle" class="subtitle">A PLAYABLE PROLOGUE</p>
+          <nav class="menu" aria-label="Main menu">
+            <button id="btn-start" class="pixel-btn primary" type="button">START JOURNEY</button>
+            <button id="btn-options" class="pixel-btn" type="button">OPTIONS</button>
+            <button id="btn-controls" class="pixel-btn" type="button">CONTROLS</button>
+            <button id="btn-language" class="pixel-btn language-btn" type="button">LANGUAGE: ENGLISH</button>
+          </nav>
+          <p id="title-hint" class="hint">Keyboard or touch controls supported</p>
+        </div>
+      </section>
+
+      <section id="modal" class="overlay modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="panel">
+          <h2 id="modal-title">OPTIONS</h2>
+          <div id="modal-content"></div>
+          <button id="modal-close" class="pixel-btn primary" type="button">BACK</button>
+        </div>
+      </section>
+
+      <section id="pause-menu" class="overlay modal hidden" role="dialog" aria-modal="true" aria-label="Pause menu">
+        <div class="panel pause-panel">
+          <h2 id="pause-title">PAUSED</h2>
+          <button id="pause-resume" class="pixel-btn primary" type="button">RESUME</button>
+          <button id="pause-restart" class="pixel-btn" type="button">RESTART CHECKPOINT</button>
+          <button id="pause-controls" class="pixel-btn" type="button">CONTROLS</button>
+          <button id="pause-options" class="pixel-btn" type="button">OPTIONS</button>
+          <button id="pause-language" class="pixel-btn" type="button">LANGUAGE: ENGLISH</button>
+          <button id="pause-quit" class="pixel-btn danger" type="button">QUIT TO TITLE</button>
+        </div>
+      </section>
+
+      <button id="pause-touch" class="touch-pause" type="button" aria-label="Pause">Ⅱ</button>
+
+      <div id="mobile-controls" class="mobile-controls" aria-hidden="true">
+        <div class="dpad">
+          <button class="touch-btn dir" data-action="left" type="button" aria-label="Move left">◀</button>
+          <button class="touch-btn dir" data-action="right" type="button" aria-label="Move right">▶</button>
+        </div>
+        <div class="actions">
+          <button class="touch-btn action jump" data-action="jump" type="button">JUMP</button>
+          <button class="touch-btn action attack" data-action="attack" type="button">ATK</button>
+          <button class="touch-btn action block" data-action="block" type="button">BLOCK</button>
+        </div>
+      </div>
+
+      <a id="youtube-link" class="youtube-link hidden" href="https://www.youtube.com/@ViguStudio" target="_blank" rel="noopener noreferrer">VIGU STUDIO • YOUTUBE</a>
+    </div>
+  </main>
+  <noscript>This game requires JavaScript.</noscript>
+  <script src="game.js"></script>
+</body>
+</html>
