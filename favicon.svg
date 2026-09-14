@@ -1,10 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" shape-rendering="crispEdges">
-  <rect width="64" height="64" fill="#07090c"/>
-  <path fill="#4c351d" d="M8 10h30v20c0 16-9 24-15 28C17 54 8 46 8 30z"/>
-  <path fill="#c59631" d="M11 13h24v17c0 12-6 19-12 23-6-4-12-11-12-23z"/>
-  <path fill="#243846" d="M15 17h16v13c0 8-4 14-8 17-4-3-8-9-8-17z"/>
-  <path fill="#b8d5dc" d="M20 20h6v20h-6zM16 27h14v6H16z"/>
-  <path fill="#72502e" d="M39 7h8v34h-8zM34 37h18v6H34zM39 43h8v13h-8z"/>
-  <path fill="#e0e5e2" d="M41 5h4v32h-4z"/>
-  <path fill="#f2c75d" d="M39 4h8v5h-8zM37 35h12v4H37z"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#111923"/><stop offset="1" stop-color="#08090c"/></linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#f1d782"/><stop offset="1" stop-color="#9b6e2d"/></linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f0f5f3"/><stop offset="1" stop-color="#8ea5aa"/></linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="11" fill="url(#bg)"/>
+  <path d="M10 13 31 8l21 5v16c0 14-8 22-21 29C18 51 10 43 10 29Z" fill="#3d2c1b" stroke="#2a1e14" stroke-width="2"/>
+  <path d="M14 16 31 12l17 4v13c0 11-6 18-17 24-11-6-17-13-17-24Z" fill="url(#gold)"/>
+  <path d="M19 20 31 17l12 3v10c0 8-4 13-12 18-8-5-12-10-12-18Z" fill="#203b43"/>
+  <path d="M29 19h5v24h-5zM22 29h19v5H22z" fill="url(#steel)"/>
+  <path d="m45 9 5 2-9 27-5-2z" fill="#604326"/>
+  <path d="m46 7 3 1-9 28-3-1z" fill="url(#steel)"/>
+  <path d="m34 34 13 4-1 4-13-4z" fill="url(#gold)"/>
 </svg>
