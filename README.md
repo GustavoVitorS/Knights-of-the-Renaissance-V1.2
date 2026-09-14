@@ -1,41 +1,179 @@
 # Knights of the Renaissance
 
+**Current version: V2 — Mobile Responsive + Gameplay & Visual Evolution**
+
 **Knights of the Renaissance** is a short browser-based action-platformer and playable prologue created by **Gustavo Vitor / Vigu Studio**.
 
-The demo is built entirely with standard web technologies and is designed to run as a static project on GitHub Pages. Its presentation is inspired by the clarity and pacing of classic 16-bit platformers, while all artwork, gameplay code, UI, music logic, effects, characters, and level layouts are original to this project.
+The project is built entirely with **HTML5, CSS3, JavaScript, Canvas API, and Web Audio API**, with no framework, backend, build step, or external game assets required. It is designed to run directly on **GitHub Pages**.
 
-## About
+V2 is the first major visual, animation, HUD, gameplay-feel, and mobile-control overhaul of the demo. The goal is to preserve the original five-stage concept while moving the project closer to the presentation quality and responsiveness expected from a polished retro-inspired action platformer.
 
-The Third Kingdom survived a war against the last great dragon, but the victory nearly destroyed the legendary Knights of the Renaissance. Years later, far beyond the kingdom's border, a young warrior trains with only a sword, a shield, and questions about a past that has never been fully explained.
+---
 
-This demo is meant to feel like the opening chapter of a larger game rather than a disconnected prototype.
+## V1 vs V2 — Visual Comparison
 
-## Features
+### Desktop — V1
 
-- Five connected stages with escalating mechanics
-- Contextual movement and combat tutorial
-- Sword attacks and mid-air attacks
-- Directional shield blocking
-- Platforming with moving and falling platforms
-- Hazards, ranged enemies, melee enemies, and combat waves
-- Checkpoints and in-level respawning
-- A timing-focused final boss encounter
-- Story intro, final dialogue, cliffhanger, and scrolling credits
-- Procedural retro sound effects and lightweight chiptune-style music using the Web Audio API
-- Original code-drawn pixel-art visuals with no external game assets
-- Adaptive fullscreen canvas that matches desktop, tablet, and landscape-phone aspect ratios without stretching the pixel art
-- Portrait-phone rotation screen with fullscreen/landscape request when supported by the browser
-- Responsive touch controls for phones and tablets
-- English and Brazilian Portuguese localization
-- Persistent volume, accessibility, and language preferences through `localStorage`
+![Knights of the Renaissance V1 desktop gameplay](preview-v1-desktop.png)
 
-## Gameplay Structure
+The original version established the core gameplay loop, five-stage structure, sword-and-shield combat, platforming, checkpoints, bilingual interface, and final boss concept. Its visuals were intentionally simple and highly procedural, with basic geometric trees, platforms, character shapes, and a minimal HUD.
 
-1. **The Training Grounds** — learn movement, jumping, attacking, and blocking.
-2. **The Forest Path** — practice platforming through hazards and moving terrain.
-3. **Combat Trial** — survive enemies approaching from both sides.
-4. **Dangerous Path** — combine platforming with melee and ranged combat.
-5. **The Clearing** — face the Old Man in a boss fight built around timing and aerial sword strikes.
+### Desktop — V2
+
+![Knights of the Renaissance V2 desktop gameplay](preview-v2-desktop.png)
+
+V2 introduces a much stronger visual identity with a darker layered forest, denser scenery, atmospheric depth, improved character readability, redesigned HUD elements, better environmental detail, and more polished combat presentation.
+
+### Mobile — V1
+
+![Knights of the Renaissance V1 mobile gameplay](preview-v1-mobile.png)
+
+The first mobile implementation used large text-labeled controls such as **JUMP**, **ATTACK**, and **BLOCK**. Although functional, the controls consumed too much screen space and were less comfortable on real landscape phones.
+
+### Mobile — V2
+
+![Knights of the Renaissance V2 mobile gameplay](preview-v2-mobile.png)
+
+V2 replaces the text-heavy controls with an icon-based layout designed for landscape phones: directional arrows for movement, an up arrow for jump, a sword for attack, and a shield for block. Touch targets are larger, better spaced, and more suitable for simultaneous multi-touch input.
+
+---
+
+## What Improved in V2
+
+### Visual Direction
+
+V2 significantly upgrades the presentation while keeping the project original and lightweight.
+
+- Added a more atmospheric layered forest with multiple depth planes.
+- Added haze, background silhouettes, foreground vegetation, richer tree rendering, stones, roots, ruins, environmental motes, and improved water/hazard presentation.
+- Improved contrast between the player, enemies, platforms, and background.
+- Reworked the final boss area so it reads as a dedicated open clearing instead of another standard forest section.
+- Preserved the project's original identity while drawing inspiration from the readability and atmosphere of classic gothic action-platformers.
+
+### Character Animation
+
+The protagonist is no longer presented as an almost static block-style sprite.
+
+V2 improves the visual language of movement with:
+
+- visible leg movement while running;
+- clearer body motion and weight transfer;
+- dedicated jump and falling poses;
+- landing compression and recovery;
+- clearer idle posture;
+- improved sword attack animation;
+- visible sword arc during attacks;
+- stronger shield-defense pose;
+- clearer hurt and combat feedback.
+
+Enemies also receive more readable silhouettes, movement, weapons, cloth/cape motion, and attack telegraphs.
+
+### Combat & Game Feel
+
+Combat has been refined to feel more responsive and easier to read.
+
+- Improved sword swing presentation and timing feedback.
+- Stronger visual impact when attacks connect.
+- Better defensive feedback when the shield blocks an attack.
+- Short hit-stop and subtle screen shake where appropriate.
+- Lightweight particles for attacks, blocking, landing, and environmental feedback.
+- Improved enemy telegraphs and clearer attack states.
+- Better boss presentation and aerial counter feedback.
+
+### HUD & Interface
+
+The HUD has been redesigned to feel more like part of a finished game.
+
+- Framed health display.
+- Improved heart presentation.
+- More dramatic boss health bar.
+- Refined tutorial messages and contextual panels.
+- Improved title, pause, Options, and mobile-orientation screens.
+- Better visual consistency between gameplay and menus.
+
+### Mobile Controls
+
+Mobile usability is one of the biggest V2 improvements.
+
+**V1 controls:**
+
+- text-heavy action buttons;
+- larger visual obstruction;
+- less comfortable spacing on some phones;
+- weaker support for simultaneous inputs.
+
+**V2 controls:**
+
+- icon-only left/right movement buttons;
+- up-arrow jump button;
+- sword attack button;
+- shield block button;
+- larger touch targets;
+- improved spacing for landscape phones;
+- semi-transparent presentation that obstructs less of the game;
+- safe-area-aware positioning;
+- pointer capture and per-pointer tracking for more reliable multi-touch input;
+- improved behavior for combinations such as **move + jump + attack**.
+
+The mobile layout was specifically reviewed using a **Redmi Note 13-class landscape viewport** as a practical reference.
+
+### Responsive Layout
+
+V2 improves support for:
+
+- desktop monitors;
+- notebooks;
+- tablets;
+- Android phones;
+- wide landscape displays;
+- portrait-to-landscape mobile transitions.
+
+The game uses an adaptive internal canvas so the scene can fill different aspect ratios without simply stretching the pixel art.
+
+On portrait phones, the game displays a dedicated landscape-orientation screen and can request fullscreen/orientation lock when the browser supports it.
+
+### Gameplay Reliability
+
+V2 preserves the gameplay fixes introduced during the V1.x development cycle, including:
+
+- reachable mandatory jumps;
+- safer platform routes;
+- corrected spike hitboxes;
+- real 2D collision checks for runner enemies;
+- vertical validation for melee attacks;
+- safer enemy placement after hazard crossings;
+- reduced unfair enemy aggro across gaps;
+- resetting falling platforms;
+- improved checkpoint behavior;
+- prevention of several progression soft-locks;
+- boss arena boundaries;
+- improved aerial boss counter behavior.
+
+---
+
+## Story
+
+The Third Kingdom survived a war against the last great dragon, but victory nearly destroyed the legendary **Knights of the Renaissance**.
+
+Years later, beyond the kingdom's borders, a young warrior trains with only a sword, a shield, and unanswered questions about a past that has never been fully revealed.
+
+This demo is designed as a **playable prologue** to a larger future project.
+
+---
+
+## Demo Structure
+
+The current demo contains five connected stages:
+
+1. **The Training Grounds** — movement, jumping, attacking, and blocking tutorial.
+2. **The Forest Path** — platforming, hazards, and moving terrain.
+3. **Combat Trial** — enemy waves and combat fundamentals.
+4. **Dangerous Path** — platforming combined with melee and ranged enemies.
+5. **The Clearing** — final training battle against the Old Man.
+
+The experience continues into a final dialogue, cliffhanger, and scrolling credits.
+
+---
 
 ## Controls
 
@@ -48,16 +186,28 @@ This demo is meant to feel like the opening chapter of a larger game rather than
 | Pause | `Esc` or `P` |
 | Continue dialogue | `Enter`, `Space`, or `E` |
 
-Touchscreen devices automatically receive on-screen movement, jump, attack, block, and pause controls. On phones held vertically, the game displays a dedicated landscape prompt before gameplay. The button requests fullscreen and landscape orientation on browsers that support orientation locking; otherwise the player can rotate the device manually.
+### Touch Controls
+
+On supported touch devices, V2 automatically displays:
+
+- **← / →** — movement
+- **↑** — jump
+- **Sword icon** — attack
+- **Shield icon** — block
+- **Pause icon** — pause
+
+---
 
 ## Languages
 
-The game includes:
+The game supports:
 
-- English
-- Português (Brasil)
+- **English**
+- **Português (Brasil)**
 
-The language can be changed from the main menu, the pause menu, or Options. The selection is saved locally and restored on the next visit.
+The language can be changed from the main menu, pause menu, or Options screen. The selected language is stored with `localStorage` and restored on the next visit.
+
+---
 
 ## Technologies
 
@@ -68,11 +218,13 @@ The language can be changed from the main menu, the pause menu, or Options. The 
 - Web Audio API
 - `localStorage`
 
-No framework, package manager, backend, build tool, or external runtime dependency is required.
+No framework, package manager, backend, or build system is required.
+
+---
 
 ## Running Locally
 
-For the closest behavior to GitHub Pages, serve the folder with any simple static server. For example:
+For behavior closest to GitHub Pages, run a small static server inside the project folder:
 
 ```bash
 python3 -m http.server 8080
@@ -84,58 +236,91 @@ Then open:
 http://localhost:8080
 ```
 
-The files are also intentionally simple enough for direct static hosting.
+---
 
 ## GitHub Pages
 
-1. Upload the project files to the root of a GitHub repository.
+1. Upload all project files and the four preview images to the repository root.
 2. Open **Settings → Pages**.
-3. Under **Build and deployment**, select **Deploy from a branch**.
-4. Select the `main` branch and `/ (root)` folder.
-5. Save and wait for the GitHub Pages URL to become available.
+3. Under **Build and deployment**, choose **Deploy from a branch**.
+4. Select the `main` branch and `/ (root)`.
+5. Save and wait for the deployment URL.
 
-No build step is needed.
+No build step is required.
 
-## Performance Notes
+---
 
-The project uses a low-resolution adaptive internal canvas with pixel-perfect rendering. Its virtual width or height expands to match the current viewport ratio, allowing wide mobile screens to fill the display without horizontally stretching the game. The game loop uses `requestAnimationFrame`, caps large frame deltas, removes expired particles/projectiles, and avoids recreating large DOM structures during gameplay.
+## Performance
 
-For lower-powered devices, enable **Reduced Effects** in Options.
+The project remains intentionally lightweight despite the V2 visual upgrade.
 
+It uses:
 
-## V1.1 Gameplay & Mobile Fixes
+- `requestAnimationFrame()` for the main loop;
+- adaptive low-resolution Canvas rendering;
+- pixel-perfect scaling;
+- capped large frame deltas;
+- controlled particle counts;
+- removal of expired projectiles and particles;
+- limited DOM work during gameplay;
+- optional **Reduced Effects** mode for weaker devices.
 
-- Reworked the mandatory platform route in **The Forest Path** so every required jump is inside the protagonist's real jump arc.
-- Added safer setup stones before spike beds to prevent unwinnable death loops.
-- Audited and rebuilt equivalent hazard crossings in **Dangerous Path** to avoid later progression blockers.
-- Slightly improved jump height while keeping the same platforming feel.
-- Rebuilt the page shell as true fullscreen responsive layout.
-- Added adaptive canvas sizing for wide displays and landscape phones.
-- Added a bilingual portrait-orientation prompt with a landscape/fullscreen action button.
-- Improved title-screen spacing and compact landscape layouts so the crest, title, subtitle, and menu no longer collide on short screens.
+---
 
+## Version History
 
-## V1.2 Gameplay Reliability Pass
+### V2 — Mobile Responsive + Gameplay & Visual Evolution
 
-- Fixed the **runner enemy's invisible air-damage bug**: contact damage now requires real 2D body overlap instead of only horizontal proximity, so the player can jump cleanly over runners.
-- Tightened sword-enemy attack reach and added vertical-range validation so melee attacks no longer trigger unfairly against a player positioned well above the enemy.
-- Added a small collision inset to spike hazards to make their damaging area match the visible spike bed more fairly.
-- Repositioned enemies in **Dangerous Path** to preserve a safe landing/run-up area after mandatory hazard crossings.
-- Exploration enemies now use a local engagement range and do not aggro or fire across an uncrossed spike/water gap, preventing them from camping the edge of a mandatory crossing before the player can land.
-- Falling platforms now automatically reset after being missed, preventing permanent level soft-locks without forcing a death/reload.
-- Locked the final boss duel to the clearing after it begins, preventing the player from escaping the encounter and leaving the boss in an unwinnable state.
-- A successful aerial sword hit now briefly interrupts the Old Man's downward stomp, preventing an unfair same-frame hit trade after the player correctly executes the intended counter.
-- Re-audited damage sources, hazard crossings, checkpoints, arena flow, boss flow, and level-transition conditions after the fix.
+- Major visual redesign.
+- More detailed and atmospheric environments.
+- Improved procedural character artwork.
+- Visible running-leg animation and clearer jump/fall poses.
+- Better sword attacks and shield-defense presentation.
+- Redesigned HUD and boss health bar.
+- Icon-based mobile controls.
+- Improved multi-touch handling.
+- Better mobile spacing and safe-area behavior.
+- Improved responsive Canvas behavior.
+- Improved final boss presentation.
+- Preserved the gameplay reliability fixes from V1.1 and V1.2.
+
+### V1.2 — Gameplay Reliability Pass
+
+- Fixed invisible air damage from runner enemies.
+- Added real two-dimensional collision validation.
+- Improved melee vertical-range checks.
+- Adjusted spike collision areas.
+- Improved enemy placement around mandatory crossings.
+- Added falling-platform reset behavior.
+- Improved boss arena and aerial-counter reliability.
+
+### V1.1 — Gameplay & Mobile Fixes
+
+- Reworked mandatory platform routes.
+- Improved jump reliability.
+- Added adaptive fullscreen layout.
+- Added portrait orientation guidance.
+- Improved menu spacing on short landscape displays.
+
+### V1 — Initial Playable Demo
+
+- Five playable stages.
+- Sword and shield combat.
+- Platforming and hazards.
+- Checkpoints.
+- Final boss.
+- English / Brazilian Portuguese localization.
+- Intro, dialogue, ending, and credits.
+
+---
 
 ## Project Status
 
-**Playable Demo / Prologue**
+**Playable Demo / Prologue — V2**
 
-The project is intentionally scoped as a short introduction to a larger future game concept.
+The project is still a demo connected to a larger future concept. Future versions can expand the world, exploration, enemies, progression, story, animation, and audiovisual identity beyond the current web prologue.
 
-## Future
-
-The complete vision for *Knights of the Renaissance* can expand beyond this web demo with a larger world, deeper progression, additional characters, exploration systems, and more of the history surrounding the Third Kingdom and the lost order.
+---
 
 ## Author
 

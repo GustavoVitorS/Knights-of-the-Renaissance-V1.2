@@ -1,8 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" shape-rendering="crispEdges">
-  <rect width="64" height="64" fill="#0a0c10"/>
-  <path fill="#d8a83f" d="M28 4h8v12h6v8h-6v28h8v8H20v-8h8V24h-6v-8h6z"/>
-  <path fill="#eef1ec" d="M30 4h4v46h-4z"/>
-  <path fill="#7f5422" d="M24 22h16v6H24zM28 50h8v10h-8z"/>
-  <path fill="#3d6a78" d="M8 22h12v18c0 9-6 15-6 15S8 49 8 40z"/>
-  <path fill="#b8d9df" d="M11 25h6v13c0 5-3 9-3 9s-3-4-3-9z"/>
+  <rect width="64" height="64" fill="#07090c"/>
+  <path fill="#4c351d" d="M8 10h30v20c0 16-9 24-15 28C17 54 8 46 8 30z"/>
+  <path fill="#c59631" d="M11 13h24v17c0 12-6 19-12 23-6-4-12-11-12-23z"/>
+  <path fill="#243846" d="M15 17h16v13c0 8-4 14-8 17-4-3-8-9-8-17z"/>
+  <path fill="#b8d5dc" d="M20 20h6v20h-6zM16 27h14v6H16z"/>
+  <path fill="#72502e" d="M39 7h8v34h-8zM34 37h18v6H34zM39 43h8v13h-8z"/>
+  <path fill="#e0e5e2" d="M41 5h4v32h-4z"/>
+  <path fill="#f2c75d" d="M39 4h8v5h-8zM37 35h12v4H37z"/>
 </svg>
