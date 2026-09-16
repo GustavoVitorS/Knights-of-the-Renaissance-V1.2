@@ -1,9 +1,18 @@
 # Knights of the Renaissance — V4.1
 
-**V4.1 Motion & Inventory** builds on V4 Ascendant and focuses on visual clarity, fluid animation, performance, and equipment usability. V4 remains the largest gameplay and presentation upgrade of *Knights of the Renaissance* so far. The project remains a static HTML/CSS/JavaScript game for GitHub Pages, but the presentation has moved away from the old blocky 16-bit prototype look toward a smoother **2.5D-cartoon-inspired side-scroller** with high-DPI Canvas rendering, layered depth, richer character silhouettes, a deeper combat loop, items, powers, multiple weapons, and a three-phase Old Man boss encounter.
+**V4.1 Motion & Inventory** is the most complete release of the original Canvas-based branch of *Knights of the Renaissance*. It preserves the lightweight static-web architecture of the early versions while pushing the project toward a smoother **2.5D cartoon action-platformer** with sharper rendering, layered atmosphere, articulated characters, animated creatures, multiple weapons, Spirit powers, healing items, a real inventory, eight playable areas, and the three-phase Old Man encounter.
 
-> Project status: **Playable web prologue / V4.1 Motion & Inventory**
+> **Project status:** Playable web prologue — V4.1 Motion & Inventory
 
+| | V4.1 |
+| --- | --- |
+| **Genre** | 2D action-platformer / playable prologue |
+| **Rendering** | HTML5 Canvas with high-DPI scaling |
+| **Campaign** | 8 playable areas |
+| **Combat** | Sword, Greatsword, Spear, shield, Spirit powers |
+| **Languages** | English + Português (Brasil) |
+| **Desktop / Mobile** | Keyboard + responsive multitouch controls |
+| **Deployment** | Static build compatible with GitHub Pages |
 
 ## V4.1 — motion, sharpness, creature animation, and inventory
 
@@ -27,7 +36,9 @@ V4.1 keeps all eight areas, the three weapon archetypes, Spirit powers, healing 
 
 ## Visual Evolution — V1 → V2 → V3 → V4.1
 
-The screenshots below document the visual and gameplay evolution of the project on **desktop and mobile**. V4.1 is the current build in the V4 branch: it keeps the large V4 systems update while improving sharpness, animation, creature readability, background performance, and inventory usability.
+The screenshots below document how the project evolved on **desktop and mobile**. V4.1 is the current build in the V4 branch, combining the large V4 gameplay expansion with the later motion, rendering, creature-animation, and inventory improvements.
+
+For the current V4.1 showcase, the README uses **clean presentation crops** from the real gameplay capture. They focus on the HUD, level composition, atmosphere, hazards, creatures, and mobile controls instead of using a close-contact combat frame where two character silhouettes can visually overlap.
 
 ### V1 — Desktop
 
@@ -73,17 +84,25 @@ The V3 mobile build retained large icon-only controls while combining the expand
 
 ### V4.1 — Desktop — Current
 
-![Knights of the Renaissance V4.1 desktop gameplay](preview-v4-desktop.png)
+![Knights of the Renaissance V4.1 desktop HUD and world showcase](preview-v4-desktop.png)
+
+The refreshed desktop showcase highlights the current **HUD, atmospheric forest depth, ruins, hazards, platforms, creature presentation, and area framing** without relying on a close-range combat moment as the primary project image.
 
 V4 changes the rendering direction from the older blocky/pixel-like prototype toward a smoother **2.5D-cartoon-inspired side-scroller**. V4.1 sharpens that direction with high-DPI rendering, anti-aliased shapes, atmospheric depth, more organic silhouettes, readable faces, articulated movement, animated monsters, a larger HUD, Spirit mechanics, multiple weapons, healing items, and the dedicated Inventory.
 
-The world now contains **eight playable areas**, including the Old Sanctum, and the final Old Man encounter uses **three complete life bars / phases** with Body, Shadow, and Spirit mechanics.
+The world contains **eight playable areas**, including the Old Sanctum, and the final Old Man encounter uses **three complete life bars / phases** with Body, Shadow, and Spirit mechanics.
 
 ### V4.1 — Mobile — Current
 
-![Knights of the Renaissance V4.1 mobile gameplay](preview-v4-mobile.png)
+![Knights of the Renaissance V4.1 mobile HUD and touch-control showcase](preview-v4-mobile.png)
 
-The current mobile layout keeps the immediate combat actions under the thumbs — movement, jump, Power, Block, and Attack — while moving healing, weapon management, and power information into the Inventory. Safe-area-aware UI, landscape framing and independent pointer tracking remain part of the touch design.
+The mobile showcase now emphasizes the parts that matter most for the responsive build: the compact vitality/Spirit HUD, landscape composition, directional controls, Jump, Power, Block, Attack, Inventory access, and safe spacing around the screen edges.
+
+The current mobile layout keeps immediate combat actions under the thumbs while moving healing, weapon management, and power information into the Inventory. Safe-area-aware UI, landscape framing, and independent pointer tracking remain part of the touch design.
+
+### Screenshot presentation note
+
+The V4.1 README intentionally uses **showcase crops rather than collision-close combat frames**. This keeps the repository overview focused on the art direction, level readability, HUD, responsive controls, and atmosphere while the detailed gameplay systems are documented in the sections below.
 
 ### What is better in the current version?
 
