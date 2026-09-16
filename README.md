@@ -426,14 +426,6 @@ Then open:
 http://localhost:8000
 ```
 
-## GitHub Pages
-
-1. Upload the V4 files to the repository root.
-2. Open **Settings → Pages**.
-3. Select **Deploy from a branch**.
-4. Select the default branch and `/ (root)`.
-5. Save and wait for deployment.
-
 ## Project structure
 
 ```text
