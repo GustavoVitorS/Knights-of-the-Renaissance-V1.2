@@ -504,11 +504,6 @@ The V4 source was checked with Node's JavaScript syntax checker. A DOM/Canvas te
 
 A headless Chromium screenshot pass could not be completed reliably in the current execution environment, so the included validation should not be interpreted as a physical-device visual playtest. A real-browser playthrough is still recommended before tagging a final release.
 
-## Author
-
-**Gustavo Vitor**  
-**Vigu Studio**
-
 YouTube: https://www.youtube.com/@ViguStudio
 
 ---
