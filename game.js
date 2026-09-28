@@ -454,6 +454,31 @@
     obtain(type){audio.sfx('pickup');if(type==='heal'){this.player.heals=Math.min(5,this.player.heals+1);this.notice(t('healing'),1.1);this.burst(this.player.x+9,this.player.y+8,C.magenta,12);}else if(type==='spirit'){this.player.spirit=Math.min(this.player.maxSpirit,this.player.spirit+45);this.notice(t('spirit'),1.1);this.burst(this.player.x+9,this.player.y+8,C.cyan,12);}else if(type==='greatsword'){this.player.unlocked.greatsword=true;this.player.weapon='greatsword';this.notice(`${t('weaponUnlocked')}: ${t('greatswordName')}`,1.6);this.burst(this.player.x+9,this.player.y+8,C.orange,18);}else if(type==='spear'){this.player.unlocked.spear=true;this.player.weapon='spear';this.notice(`${t('weaponUnlocked')}: ${t('spearName')}`,1.6);this.burst(this.player.x+9,this.player.y+8,C.orange,18);}else if(type==='powerAirBurst'){this.player.unlocked.airBurst=true;this.notice(`${t('powerUnlocked')}: ${t('airBurst')}`,1.6);this.burst(this.player.x+9,this.player.y+8,C.cyan,18);}else if(type==='powerGuardBurst'){this.player.unlocked.guardBurst=true;this.notice(`${t('powerUnlocked')}: ${t('guardBurst')}`,1.6);this.burst(this.player.x+9,this.player.y+8,C.violet,18);}else if(type==='powerEnergySlash'){this.player.unlocked.energySlash=true;this.notice(`${t('powerUnlocked')}: ${t('energySlash')}`,1.6);this.burst(this.player.x+9,this.player.y+8,C.cyan,18);}this.refreshInventory();}
     moveEntity(e,dt){const prevX=e.x,prevY=e.y;e.x=clamp(e.x+e.vx*dt,0,this.level.width-e.w);for(const p of this.level.platforms){if(p.oneWay)continue;if(rectsOverlap(e,p)){if(e.vx>0)e.x=p.x-e.w;else if(e.vx<0)e.x=p.x+p.w;e.vx=0;}}e.y+=e.vy*dt;e.onGround=false;e.onPlatform=null;for(const p of this.level.platforms){const fallingDown=e.vy>=0;const prevBottom=prevY+e.h;const currBottom=e.y+e.h;const withinX=e.x+e.w>p.x+1&&e.x<p.x+p.w-1;if(p.oneWay){if(fallingDown&&withinX&&prevBottom<=p.y+4&&currBottom>=p.y){e.y=p.y-e.h;e.vy=0;e.onGround=true;e.onPlatform=p;}}else if(rectsOverlap(e,p)){if(fallingDown&&prevBottom<=p.y+8){e.y=p.y-e.h;e.vy=0;e.onGround=true;e.onPlatform=p;}else if(e.vy<0&&prevY>=p.y+p.h-4){e.y=p.y+p.h;e.vy=0;}else{e.x=prevX;e.vx=0;}}}
     }
+    resolveStomp(prevPlayerY){
+      const p=this.player;if(p.vy<0)return false;
+      const prevBottom=prevPlayerY+p.h,currBottom=p.y+p.h;
+      const px1=p.x+3,px2=p.x+p.w-3;
+      let target=null,targetTop=Infinity;
+      const consider=(e)=>{
+        if(!e||e.dead)return;
+        const box=e.bodyBox||e,top=box.y;
+        const horizontal=px2>box.x+1&&px1<box.x+box.w-1;
+        const crossedTop=prevBottom<=top+4&&currBottom>=top;
+        if(horizontal&&crossedTop&&top<targetTop){target=e;targetTop=top;}
+      };
+      for(const e of this.enemies)consider(e);
+      consider(this.boss);
+      if(!target)return false;
+
+      // A stomp wins the contact: land on the head, deal one hit, then bounce away.
+      // Repositioning first also makes shield enemies treat the attack as coming from above.
+      p.y=targetTop-p.h-1;p.vy=-185;p.onGround=false;p.onPlatform=null;p.coyote=0;
+      p.airBurstUsed=false;p.airDashing=false;p.dashTimer=0;
+      const box=target.bodyBox||target;
+      const hit=target.damage(1,this,p.x+p.w/2);
+      if(hit){this.ring(box.x+box.w/2,box.y+2,C.cyan,3,.2,62);this.burst(box.x+box.w/2,box.y+2,C.cyan,6);}
+      return true;
+    }
     startEnding(){this.mode='ending';this.endingTimer=0;this.setGameplayUI(false);audio.setMusic('ending');}
     update(dt){this.time+=dt;if(this.noticeTimer>0)this.noticeTimer-=dt;if(this.environmentPulse>0)this.environmentPulse=Math.max(0,this.environmentPulse-dt*1.5);if(this.shakeTime>0)this.shakeTime-=dt;
       if(this.mode==='intro'){this.introTimer+=dt;if(input.pauseTap()){this.startLevel();return;}if(input.confirmTap()||this.introTimer>3.2){this.introTimer=0;this.introIndex++;if(this.introIndex>=t('prologue').length)this.startLevel();}return;}
@@ -462,7 +487,7 @@
       if(this.mode!=='playing')return;
       if(!ui.modal.classList.contains('hidden'))return;
       if(input.pauseTap()){this.pause();return;}if(input.inventoryTap()){this.openInventory();return;}
-      this.level.platforms.forEach(p=>p.update(dt,this.player));this.player.update(dt,this);if(this.mode!=='playing')return;for(const cp of this.level.checkpoints)cp.update(this.player,this);for(const p of this.level.pickups)p.update(dt,this);for(const e of this.enemies)e.update(dt,this);if(this.boss)this.boss.update(dt,this);
+      this.level.platforms.forEach(p=>p.update(dt,this.player));const prevPlayerY=this.player.y;this.player.update(dt,this);if(this.mode!=='playing')return;this.resolveStomp(prevPlayerY);if(this.mode!=='playing')return;for(const cp of this.level.checkpoints)cp.update(this.player,this);for(const p of this.level.pickups)p.update(dt,this);for(const e of this.enemies)e.update(dt,this);if(this.boss)this.boss.update(dt,this);
       for(const h of this.level.hazards){const feet={x:this.player.x+2,y:this.player.y+this.player.h-5,w:this.player.w-4,h:6};if(rectsOverlap(feet,h))this.player.damage(1,h.x+h.w/2,true,this);}
       for(const pr of this.projectiles){if(pr.owner==='player'){pr.life-=dt;pr.x+=pr.vx*dt;pr.y+=pr.vy*dt;if(pr.life<=0){pr.dead=true;continue;}for(const e of this.enemies){if(!e.dead&&rectsOverlap(pr,e.bodyBox)){e.damage(1,this,pr.x);pr.dead=true;break;}}if(this.boss&&!this.boss.dead&&rectsOverlap(pr,this.boss)){this.boss.damage(1,this,pr.x);pr.dead=true;}}else pr.update(dt,this);}this.projectiles=this.projectiles.filter(p=>!p.dead);
       for(const s of this.shockwaves){s.life-=dt;s.x+=s.vx*dt;if(s.life<=0)s.dead=true;const feet={x:this.player.x+2,y:this.player.y+this.player.h-6,w:this.player.w-4,h:6};if(!s.dead&&rectsOverlap(s,feet)){this.player.damage(1,s.x,true,this);s.dead=true;}}this.shockwaves=this.shockwaves.filter(s=>!s.dead);
@@ -708,5 +733,5 @@
   window.addEventListener('keydown',e=>{if(game.mode==='paused'&&(e.code==='Escape'||e.code==='KeyP')&&ui.modal.classList.contains('hidden')){game.resume();}else if(game.mode==='inventory'&&(e.code==='KeyI'||e.code==='Escape'))game.closeInventory();});
   requestAnimationFrame(frame);
 
-  window.__KOTR_V5__={game,settings,version:'5.3.0-combat-fix'};
+  window.__KOTR_V5__={game,settings,version:'5.3.1-stomp-fix'};
 })();
