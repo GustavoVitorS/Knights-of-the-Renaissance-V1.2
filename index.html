@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
-  <meta name="theme-color" content="#07090c" />
-  <meta name="description" content="Knights of the Renaissance V4.1 — sharper cartoon rendering, fluid animation and inventory update by Vigu Studio." />
-  <title>Knights of the Renaissance — V4.1</title>
+  <meta name="theme-color" content="#09051a" />
+  <meta name="description" content="Knights of the Renaissance V5 — Neon Renaissance, a geometric neon medieval action-platformer by Vigu Studio." />
+  <title>Knights of the Renaissance — Serpent Whip</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -31,7 +31,10 @@
       <section id="title-screen" class="overlay screen active" aria-label="Title screen">
         <div class="title-card">
           <div class="title-emblem" aria-hidden="true">
-            <span class="emblem-ring"></span><span class="emblem-star">✦</span>
+            <span class="emblem-orbit orbit-a"></span>
+            <span class="emblem-orbit orbit-b"></span>
+            <span class="emblem-ring"></span>
+            <span class="emblem-sword"></span>
           </div>
           <p id="eyebrow" class="eyebrow">VIGU STUDIO PRESENTS</p>
           <h1><span>KNIGHTS</span><small>OF THE</small><span>RENAISSANCE</span></h1>
@@ -43,13 +46,13 @@
             <button id="btn-language" class="pixel-btn language-btn" type="button">LANGUAGE: ENGLISH</button>
           </nav>
           <p id="title-hint" class="hint">Keyboard or touch controls supported</p>
-          <span class="version-tag">V4.1 • MOTION & INVENTORY</span>
+          <span class="version-tag">V5.3 • COMBAT FIX</span>
         </div>
       </section>
 
       <section id="modal" class="overlay modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="panel">
-          <div class="panel-ornament" aria-hidden="true">◆</div>
+          <div class="panel-ornament" aria-hidden="true">◇</div>
           <h2 id="modal-title">OPTIONS</h2>
           <div id="modal-content"></div>
           <button id="modal-close" class="pixel-btn primary" type="button">BACK</button>
@@ -58,7 +61,7 @@
 
       <section id="pause-menu" class="overlay modal hidden" role="dialog" aria-modal="true" aria-label="Pause menu">
         <div class="panel pause-panel">
-          <div class="panel-ornament" aria-hidden="true">◆</div>
+          <div class="panel-ornament" aria-hidden="true">◇</div>
           <h2 id="pause-title">PAUSED</h2>
           <button id="pause-resume" class="pixel-btn primary" type="button">RESUME</button>
           <button id="pause-restart" class="pixel-btn" type="button">RESTART CHECKPOINT</button>
@@ -107,19 +110,13 @@
             <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 5 6 17h6v10h8V17h6z"/></svg>
           </button>
           <button class="touch-btn action attack" data-action="attack" type="button" aria-label="Attack">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="m23.8 4.2 4 4-12.6 12.6-3.1.6.6-3.1L23.8 4.2ZM10.8 20.9l.8 3.2-2.4 2.4-2-2-2.6 2.6-1.7-1.7 2.6-2.6-2-2 2.4-2.4 3.2.8 1.7 1.7Z"/></svg>
+            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26 Q28 22 15 12 Q5 2 25 5 L26 8 Q12 5 18 12 Q31 25 5 29 Z"/></svg>
           </button>
           <button class="touch-btn action block" data-action="block" type="button" aria-label="Block">
             <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3 26 7v8c0 6.9-4.2 11.4-10 14-5.8-2.6-10-7.1-10-14V7l10-4Zm0 5.1-5 2v5c0 3.8 1.8 6.6 5 8.5 3.2-1.9 5-4.7 5-8.5v-5l-5-2Z"/></svg>
           </button>
           <button class="touch-btn utility power" data-action="power" type="button" aria-label="Power">
             <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M18 2 7 17h8l-1 13 11-16h-8z"/></svg>
-          </button>
-          <button class="touch-btn utility heal" data-action="heal" type="button" aria-label="Heal">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12 3h8v5h4v5h-4v16h-8V13H8V8h4z"/></svg>
-          </button>
-          <button class="touch-btn utility weapon" data-action="weapon" type="button" aria-label="Switch weapon">
-            <svg viewBox="0 0 32 32" aria-hidden="true"><path d="m7 5 4 4-2 2-4-4 2-2Zm18 0 2 2-8 8 2 2-2 2-2-2-8 8-2-2 8-8-2-2 2-2 2 2 8-8Z"/></svg>
           </button>
         </div>
       </div>
